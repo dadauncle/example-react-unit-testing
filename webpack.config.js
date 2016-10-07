@@ -1,6 +1,7 @@
 var webpack = require('webpack');
+var path = require('path');
 
-var config = {
+module.exports = {
   entry: [
     path.resolve(__dirname, 'src'),
   ],
@@ -13,12 +14,19 @@ var config = {
       {
         exclude: /node_modules/,
         loader: 'babel',
-        test: /\.js/,
+        test: /\.js$/,
       },
     ],
   },
-  plugins: [
-  ],
+  resolve: {
+    root: path.resolve(__dirname, 'src'),
+    extensions: [
+      '',
+      '.js',
+    ],
+    moduleDirectories: [
+      'src',
+      'node_modules',
+    ],
+  }
 };
-
-module.exports = config;
