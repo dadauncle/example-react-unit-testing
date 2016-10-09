@@ -1,3 +1,7 @@
 import React from 'react';
 
-export default ({onClick}) => <button onClick={onClick} />;
+export default ({onClick, label}) => (
+  <button onClick={onClick}>
+    {label}
+  </button>
+);

@@ -1,31 +1,46 @@
 var webpackConfig = require('./webpack.config.js');
 
 var config = function(config) {
-  config.set({
+  return config.set({
     basePath: '',
+    browsers: [
+      'PhantomJS',
+    ],
     frameworks: [
       'jasmine'
     ],
     files: [
-      'client/**/spec.js',
+      'src/**/spec.js',
     ],
     preprocessors: {
-      'client/**/*.js': [
+      'src/**/*.js': [
         'webpack',
         'sourcemap',
       ],
-      'client/**/*.js': [
+      'src/**/spec.js': [
         'webpack',
         'sourcemap',
       ],
     },
-    webpack: webpackConfig,
+    webpack: Object.assign(
+      {},
+      webpackConfig,
+      {
+        externals: {
+          'react/addons': true,
+          'react/lib/ExecutionEnvironment': true,
+          'react/lib/ReactContext': true,
+        },
+      }
+    ),
+    webpackServer: {
+      noInfo: true,
+    },
     frameworks: [
       'jasmine'
     ],
     reporters: [
       'progress',
-      'coverage',
     ],
     colors: true,
     autoWatch: true,

@@ -16,6 +16,10 @@ module.exports = {
         loader: 'babel',
         test: /\.js$/,
       },
+      {
+        loader: 'json',
+        test: /\.json$/,
+      },
     ],
   },
   resolve: {
@@ -23,6 +27,7 @@ module.exports = {
     extensions: [
       '',
       '.js',
+      '.json',
     ],
     moduleDirectories: [
       'src',
